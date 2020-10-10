@@ -16,7 +16,7 @@
 <or_exp> ::= <or_exp> OR <and_exp> | <and_exp>
 <and_exp> ::= <and_exp> AND <relational_exp> | <relational_exp>
 <relational_exp> ::= <relational_exp> <relational_op> <sum_diff_exp> | <sum_diff_exp>
-<relational_op> ::= > | >= | < | <= | = | !=
+<relational_op> ::= > | >= | < | <= | ?= | !=
 <sum_diff_exp> ::= <sum_diff_exp> <sum_diff_op> <factor> | <factor>
 <sum_diff_op> ::= + | -
 <factor> ::= <factor> <factor_op> <power> | <power>

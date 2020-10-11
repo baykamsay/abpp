@@ -33,7 +33,8 @@
 <str> ::= '[ -ÿ]+' # fix
 <list> ::= [ <elements> ] | []
 <elements> ::= <id> | <id> , <elements>
-<func> ::= <type> ( <param_decs> ) <stmt> | <type> () <stmt>
+<func> ::= <type> <func_dec> | <func_dec>
+<func_dec> ::= ( <param_decs> ) <stmt> | () <stmt>
 <param_decs> ::= <declaration> | <declaration> , <param_decs>
 <not> ::= NOT
 <function_exp> ::= <var> ( <params> ) | <var> ()

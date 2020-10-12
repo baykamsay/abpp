@@ -1,12 +1,13 @@
+# BNF for the language AB++
 <program> ::= <stmts>
 <stmts> ::= <stmt> | <stmt> <stmts>
-<stmt> ::= <non_if_stmt> | <if_stmt>
+<stmt> ::= <non_if_stmt> | <if_stmt> | <comment>
 <non_if_stmt> ::= <single_stmt> | <loop_stmt> | <stmt_group> | <return_stmt> | <io_stmt>
 <single_stmt> ::= <declaration> | <assignment> | <declaration_assignment> | <expression> ;
 <declaration> ::= <type> <var> | CONST <type> <var>
 <type> ::= INT | RAT | STR | BOOL | LIST | FUNC
-<var> ::= <char> | <char> <string>
-<string> ::= <char> | <digit> | <char> <string> | <digit> <string>
+<var> ::= <char> | <char> <chars>
+<chars> ::= <char> | <digit> | <char> <chars> | <digit> <chars>
 <char> ::= a | b | c | d | e | f | g | h | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z 
         | A | B | C | D | E | F | G | H | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z 
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
@@ -20,7 +21,7 @@
 <sum_diff_exp> ::= <sum_diff_exp> <sum_diff_op> <factor> | <factor>
 <sum_diff_op> ::= + | -
 <factor> ::= <factor> <factor_op> <power> | <power>
-<factor_op> ::= * | -
+<factor_op> ::= * | / | %
 <power> ::= <power> ^ <not_exp> | <not_exp>
 <not_exp> ::= <term> | <not> <term>
 <term> := ( <expression> ) | <id>
@@ -30,7 +31,7 @@
 <natural> ::= <digit> | <digit> <natural>
 <rat> ::= <int> . <natural> | . <natural> | <sum_diff_op> . <natural>
 <bool> ::= TRUE | FALSE
-<str> ::= '[ -ÿ]+' # fix
+<str> ::= '[^']*'
 <list> ::= [ <elements> ] | []
 <elements> ::= <id> | <id> , <elements>
 <func> ::= <type> <func_dec> | <func_dec>
@@ -51,3 +52,4 @@
 <io_stmt> ::= <i_stmt> | <o_stmt>
 <i_stmt> ::= INPUT <id>
 <o_stmt> ::= OUTPUT <id>
+<comment> ::= #[^#]*\n

@@ -9,23 +9,23 @@ CONST INT var8;
 
 var := 2;
 
-1 + 2
-1 - 2
-1 * 2
-1 / 2
-1 % 2
-1 ^ 2
-1 > 2 >=
-1 < 2
-1 = 2
-TRUE AND FALSE
-TRUE OR FALSE
+1 + 2;
+1 - 2;
+1 * 2;
+1 / 2;
+1 % 2;
+1 ^ 2;
+1 > 2;
+1 < 2;
+1 ?= 2;
+TRUE AND FALSE;
+TRUE OR FALSE;
 
 WHILE 1 > 2: {
     # do stuff
 }
 
-FOR INT i = 0; i < 3; i += 1: {
+FOR INT i := 0; i < 3; i += 1: {
     # do stuff
 }
 
@@ -38,13 +38,11 @@ IF a > b: {
 INPUT string;
 OUTPUT string;
 
-FUNCT function;
-function := INT (params) {
+FUNC function;
+function := INT (INT param) {
     # do stuff
     RETURN something;
-};
+}
 function(params);
-
-INT ()
 
 # comment

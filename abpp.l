@@ -1,18 +1,20 @@
 %option main
-/* add backslash */
 digit [0-9]
 letter [A-Za-z]
 sign [+-]
+space [ |\t]
 semicolon ;
+colon :
+comma ,
 constant CONST
-/* maybe make types single statement */
+comment #[^\n]*\n
 int_type INT
 rat_type RAT
 str_type STR
 bool_type BOOL
 list_type LIST
 func_type FUNC
-type INT|RAT|STR|BOOL|LIST|FUNC
+type {int_type}|{rat_type}|{str_type}|{bool_type}|{list_type}|{func_type}
 var {letter}({letter}|{digit}|_)*
 assignment_op :=|\+=|\-=|\*=|\/=|\^=
 or_op OR
@@ -23,17 +25,25 @@ factor_op \*|\/|%
 power_op \^
 lp \(
 rp \)
+lcb \{
+rcb \}
 int {sign}?{digit}+
 rational {sign}?{digit}*(\.)?{digit}+
 bool TRUE|FALSE
 string '[^']*'
-/* fix lists in lists */
 element {int}|{rational}|{bool}|{string}|{var}
-list \[(({element},[ |\t]*)*({element}))*\]
-declaration {constant}?[ |\t]*{type}[ |\t]*{var}
-func {type}?[ |\t]*{lp}((({declaration},[ |\t]*)*{declaration})*){rp}
-comment #[^\n]*\n
-
+list \[(({element},{space}*)*({element}))*\]
+declaration {constant}?{space}*{type}{space}*{var}
+func {type}?{space}*{lp}((({declaration},{space}*)*{declaration})*){rp}
+not NOT
+primitive_func_id GET_INCLINATION\(\)|GET_ALTITUDE\(\)|GET_TEMPERATURE\(\)|GET_ACCELERATION\(\)|GET_TIME\(\)|TURN_CAMERA\(\)|TAKE_PICTURE\(\)|CONNECT_BASE\(\)
+if IF
+else ELSE
+while WHILE
+for FOR
+return RETURN
+input INPUT
+output OUTPUT
 %%
 {semicolon} printf("SEMICOLON ");
 {constant} printf("CONST ");
@@ -52,13 +62,25 @@ comment #[^\n]*\n
 {power_op} printf("POWER_OP ");
 {lp} printf("LP ");
 {rp} printf("RP ");
+{lcb} printf("LCB ");
+{rcb} printf("RCB ");
 {int} printf("INT ");
 {rational} printf("RAT ");
 {bool} printf("BOOL ");
 {string} printf("STR ");
 {list} printf("LIST ");
+{not} printf("NOT ");
+{comma} printf("COMMA ");
 {func} printf("FUNC ");
-
-{comment} printf("COMMENT ");
+{primitive_func_id} printf("PRIMITIVE_FUNC_ID");
+{if} printf("IF ");
+{colon} printf("COLON ");
+{else} printf("ELSE ");
+{while} printf("WHILE ");
+{for} printf("FOR ");
+{return} printf("RETURN ");
+{input} printf("INPUT ");
+{output} printf("OUTPUT ");
+{comment} printf("COMMENT \n");
 {var} printf("VAR ");
 %%

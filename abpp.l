@@ -19,7 +19,7 @@ var {letter}({letter}|{digit}|_)*
 assignment_op :=|\+=|\-=|\*=|\/=|\^=
 or_op OR
 and_op AND
-relational_op >|>=|<|<=|\?=|\^=
+relational_op >|>=|<|<=|\?=|!=
 sum_diff_op \+|\-
 factor_op \*|\/|%
 power_op \^

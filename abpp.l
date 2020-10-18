@@ -13,7 +13,7 @@ rat_type RAT
 str_type STR
 bool_type BOOL
 func_type FUNC
-var {letter}({letter}|{digit}|_)*
+identifier {letter}({letter}|{digit}|_)*
 assignment_op :=|\+=|\-=|\*=|\/=|\^=
 or_op OR
 and_op AND
@@ -73,5 +73,5 @@ output OUTPUT
 {input} printf("INPUT ");
 {output} printf("OUTPUT ");
 {comment} printf("COMMENT \n");
-{var} printf("VAR ");
+{identifier} printf("IDENT ");
 %%

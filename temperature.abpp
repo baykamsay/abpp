@@ -1,0 +1,37 @@
+# Program to warn about temperature changes
+# Author: Baykam Say
+
+# All temperatures are in Celsius
+CONST INT upperTemperatureLimit := 60;
+CONST INT lowerTemperatureLimit := 0;
+
+# Parameters:
+# Temperature - the temperature
+# Return:
+# 0 if it is too cold, 1 if it is ok, 2 if it is too hot
+FUNC monitorTemperature := INT (INT temperature) {
+    IF temperature < lowerTemperatureLimit:
+        RETURN 0;
+    ELSE IF temperature > upperTemperatureLimit:
+        RETURN 2;
+    ELSE RETURN 1;
+}
+
+INT temperature;
+
+while TRUE: {
+    temperature := GET_TEMPERATURE();
+    INT result := monitorTemperature(temperature);
+
+    IF result ?= 0: {
+        OUTPUT 'Too cold, it is ' + temperature + ' degrees outside';
+        OUTPUT 'The altitude is ' + GET_ALTITUDE() + ' m';
+        TAKE_PICTURE();
+    } ELSE IF result ?= 1: {
+        OUTPUT 'Everything is ok.';
+    } ELSE {
+        OUTPUT 'Too hot, it is ' + temperature + ' degrees outside';
+        OUTPUT 'The altitude is ' + GET_ALTITUDE() + ' m';
+        TAKE_PICTURE();
+    }
+}

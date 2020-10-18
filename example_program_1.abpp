@@ -18,9 +18,10 @@ INT acceleration := GET_ACCELERATION();
 INT time := GET_TIME();
 
 IF altitude <= MIN_ALTITUDE AND temperature <= MAX_TEMPERATURE: {
-     altitude++;
+     altitude += MIN_ALTITUDE;
 }
 
+STR in;
 INPUT in;
 IF in ?= 'take' OR 'TAKE': {
      TAKE_PICTURE();

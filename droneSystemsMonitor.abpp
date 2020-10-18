@@ -1,0 +1,32 @@
+# A drone systems monitor using AB++
+# Author: Baykam Say
+
+OUTPUT 'Welcome to drone systems monitor!';
+
+INT input := -1;
+
+WHILE input != 0: {
+  OUTPUT 'Enter the corresponding number to perform the action:';
+  OUTPUT '1: get the inclination';
+  OUTPUT '2: get the altitude';
+  OUTPUT '3: get the temperature';
+  OUTPUT '4: get the acceleration';
+  OUTPUT '5: get the time';
+  OUTPUT '0: exit';
+
+  INPUT input;
+
+  IF input ?= 1:
+    OUTPUT 'The inclination is: ' + GET_INCLINATION();
+  ELSE IF input ?= 2:
+    OUTPUT 'The altitude is: ' + GET_ALTITUDE();
+  ELSE IF input ?= 3:
+    OUTPUT 'The temperature is: ' + GET_TEMPERATURE();
+  ELSE IF input ?= 4:
+    OUTPUT 'The acceleration is: ' + GET_ACCELERATION();
+  ELSE IF input ?= 5:
+    OUTPUT 'The time is: ' + GET_TIME();
+  ELSE IF input ?= 0:
+    OUTPUT 'Thanks for using drone systems monitor!';
+  ELSE OUTPUT 'ERROR: illegal input!';
+}

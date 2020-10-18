@@ -1,0 +1,66 @@
+#Test Program For ab++
+
+CONST INT MAX_SIZE := 20;
+CONST INT MIN_ALTITUDE := 100;
+CONST INT MAX_TEMPERATURE := 40;
+
+INT a;
+INT b;
+RAT c;
+BOOL bool;
+FUNC compareSum;
+STR str;
+
+INT inclination := GET_INCLINATION();
+INT altitude := GET_ALTITUDE();
+INT temperature := GET_TEMPERATURE();
+INT acceleration := GET_ACCELERATION();
+INT time := GET_TIME();
+
+IF altitude <= MIN_ALTITUDE AND temperature <= MAX_TEMPERATURE: {
+     altitude++;
+}
+
+INPUT in;
+IF in ?= "take" OR "TAKE": {
+     TAKE_PICTURE();
+} 
+IF in ?= "connect" OR "CONNECT":{
+     CONNECT_BASE();
+}
+
+IF 
+a := 10;
+c := a / 4;
+INPUT in;
+WHILE a < MAX_SIZE: {
+       c /= in;	    
+       a := Max_SIZE % a; 
+}
+
+b := 4;
+OUTPUT out;
+str := "false";
+FOR INT i = 1; i < 10; i++: {
+       a *= i^2;
+       IF i ?= b:{
+	 bool := TRUE;      
+       } ELSE {
+       out := STR;
+       }
+}
+
+compareSumDiff := INT (INT p1, INT p2){
+	IF p1 >= p2:{
+	    p1 += p2;
+        } ELSE {
+	    p1 -= p2;
+    return p1;
+} 
+
+a := 2;
+b := 5;
+c := compareSumDiff(a,b);
+
+
+

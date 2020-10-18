@@ -19,7 +19,7 @@ FUNC monitorTemperature := INT (INT temperature) {
 
 INT temperature;
 
-while TRUE: {
+WHILE TRUE: {
     temperature := GET_TEMPERATURE();
     INT result := monitorTemperature(temperature);
 

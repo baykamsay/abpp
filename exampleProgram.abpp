@@ -32,7 +32,7 @@ IF in ?= 'connect' OR 'CONNECT':{
 
 a := 10;
 c := a / 4;
-INT inNum
+INT inNum;
 INPUT inNum;
 WHILE a < MAX_SIZE: {
     c /= inNum;	    

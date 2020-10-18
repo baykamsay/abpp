@@ -18,16 +18,16 @@ INT acceleration := GET_ACCELERATION();
 INT time := GET_TIME();
 
 IF altitude <= MIN_ALTITUDE AND temperature <= MAX_TEMPERATURE: {
-     altitude += MIN_ALTITUDE;
+    altitude += MIN_ALTITUDE;
 }
 
 STR in;
 INPUT in;
 IF in ?= 'take' OR 'TAKE': {
-     TAKE_PICTURE();
+    TAKE_PICTURE();
 } 
 IF in ?= 'connect' OR 'CONNECT':{
-     CONNECT_BASE();
+    CONNECT_BASE();
 }
 
 IF 
@@ -35,28 +35,27 @@ a := 10;
 c := a / 4;
 INPUT in;
 WHILE a < MAX_SIZE: {
-       c /= in;	    
-       a := MAX_SIZE % a; 
+    c /= in;	    
+    a := MAX_SIZE % a; 
 }
 
 b := 4;
-OUTPUT out;
 str := 'false';
 FOR INT i = 1; i < 10; i+=1: {
-       a *= i^2;
-       IF i ?= b:{
-	 bool := TRUE;      
-       } ELSE {
-       out := str;
-       }
+    a *= i^2;
+    IF i ?= b: {
+	    bool := TRUE;      
+    } ELSE {
+        OUTPUT str;
+    }
 }
 
-compareSumDiff := INT (INT p1, INT p2){
+compareSumDiff := INT (INT p1, INT p2) {
 	IF p1 >= p2:{
 	    p1 += p2;
-        } ELSE {
+    } ELSE {
 	    p1 -= p2;
-    return p1;
+    RETURN p1;
 } 
 
 a := 2;

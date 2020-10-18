@@ -42,12 +42,12 @@ WHILE a < MAX_SIZE: {
 b := 4;
 OUTPUT out;
 str := 'false';
-FOR INT i = 1; i < 10; i++: {
+FOR INT i = 1; i < 10; i+=1: {
        a *= i^2;
        IF i ?= b:{
 	 bool := TRUE;      
        } ELSE {
-       out := STR;
+       out := str;
        }
 }
 

@@ -17,7 +17,7 @@ var {letter}({letter}|{digit}|_)*
 assignment_op :=|\+=|\-=|\*=|\/=|\^=
 or_op OR
 and_op AND
-relational_op >|>=|<|<=|\?=|\!=
+relational_op >|>=|<|<=|\?=|!=
 sum_diff_op \+|\-
 factor_op \*|\/|%
 power_op \^
@@ -63,7 +63,7 @@ output OUTPUT
 {string} printf("STR ");
 {not} printf("NOT ");
 {comma} printf("COMMA ");
-{primitive_func_id} printf("PRIMITIVE_FUNC_ID");
+{primitive_func_id} printf("PRIMITIVE_FUNC_ID ");
 {if} printf("IF ");
 {colon} printf("COLON ");
 {else} printf("ELSE ");

@@ -1,4 +1,4 @@
-#Test Program For ab++
+#Test Program For AB++
 
 CONST INT MAX_SIZE := 20;
 CONST INT MIN_ALTITUDE := 100;

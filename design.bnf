@@ -4,16 +4,17 @@
 <stmt> ::= <non_if_stmt> | <if_stmt> | <comment>
 <non_if_stmt> ::= <single_stmt> | <loop_stmt> | <stmt_group>
 <single_stmt> ::= <declaration> | <assignment> | <declaration_assignment> | <expression> | <return_stmt> | <io_stmt> ;
-<declaration> ::= <type> <var> | CONST <type> <var>
+<declaration> ::= <type> <ident> | CONST <type> <ident>
 <type> ::= INT | RAT | STR | BOOL | FUNC
-<var> ::= <char> | <char> <chars>
+<ident> ::= <char> | <char> <chars>
 <chars> ::= <char> | <digit> | <char> <chars> | <digit> <chars>
 <char> ::= a | b | c | d | e | f | g | h | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z 
         | A | B | C | D | E | F | G | H | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _ | -
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-<assignment> ::= <var> <assignment_op> <expression>
+<assignment> ::= <ident> <assignment_op> <expression>
 <assignment_op> ::= := | += | -= | *= | /= | ^=
-<expression> ::= <or_exp> | <function_exp>
+<declaration_assignment> ::= <declaration> <assignment_op> <expression>
+<expression> ::= <or_exp>
 <or_exp> ::= <or_exp> OR <and_exp> | <and_exp>
 <and_exp> ::= <and_exp> AND <relational_exp> | <relational_exp>
 <relational_exp> ::= <relational_exp> <relational_op> <sum_diff_exp> | <sum_diff_exp>
@@ -24,8 +25,7 @@
 <factor_op> ::= * | / | %
 <power> ::= <power> ^ <not_exp> | <not_exp>
 <not_exp> ::= <term> | <not> <term>
-<term> := ( <expression> ) | <id>
-<id> ::= <var> | <const>
+<term> := ( <expression> ) | <ident> | <const> | <function_exp>
 <const> ::= <int> | <rat> | <bool> | <str> | <func>
 <int> ::= <natural> | <sum_diff_op> <natural>
 <natural> ::= <digit> | <digit> <natural>
@@ -38,9 +38,9 @@
 <func_dec> ::= ( <param_decs> ) <stmt> | () <stmt>
 <param_decs> ::= <declaration> | <declaration> , <param_decs>
 <not> ::= NOT
-<function_exp> ::= <var> ( <params> ) | <var> () | <primitive_funcs>
+<function_exp> ::= <ident> ( <params> ) | <ident> () | <primitive_funcs>
 <primitive_funcs> ::= GET_INCLINATION () | GET_ALTITUDE () | GET_TEMPERATURE () | GET_ACCELERATION () | GET_TIME () | TURN_CAMERA () | TAKE_PICTURE () | CONNECT_BASE ()
-<params> ::= <id> | <id> , <params>
+<params> ::= <expression> | <expression> , <params>
 <if_stmt> ::= <matched> | <unmatched>
 <matched> ::= IF <expression> : <matched> ELSE <matched> | <non_if_stmt>
 <unmatched> ::= IF <expression> : <stmt> | IF <expression> : <matched> ELSE <unmatched>
@@ -51,6 +51,6 @@
 <stmt_group> ::= { <stmts> }
 <return_stmt> ::= RETURN ; | RETURN <expression> ;
 <io_stmt> ::= <i_stmt> | <o_stmt>
-<i_stmt> ::= INPUT <id>
-<o_stmt> ::= OUTPUT <id>
+<i_stmt> ::= INPUT <expression>
+<o_stmt> ::= OUTPUT <expression>
 <comment> ::= # <all_chars> \n

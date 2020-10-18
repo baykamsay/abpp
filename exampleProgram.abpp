@@ -30,12 +30,12 @@ IF in ?= 'connect' OR 'CONNECT':{
     CONNECT_BASE();
 }
 
-IF 
 a := 10;
 c := a / 4;
-INPUT in;
+INT inNum
+INPUT inNum;
 WHILE a < MAX_SIZE: {
-    c /= in;	    
+    c /= inNum;	    
     a := MAX_SIZE % a; 
 }
 
@@ -61,6 +61,3 @@ compareSumDiff := INT (INT p1, INT p2) {
 a := 2;
 b := 5;
 c := compareSumDiff(a,b);
-
-
-

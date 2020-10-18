@@ -5,7 +5,7 @@
 <non_if_stmt> ::= <single_stmt> | <loop_stmt> | <stmt_group>
 <single_stmt> ::= <declaration> | <assignment> | <declaration_assignment> | <expression> | <return_stmt> | <io_stmt> ;
 <declaration> ::= <type> <var> | CONST <type> <var>
-<type> ::= INT | RAT | STR | BOOL | LIST | FUNC
+<type> ::= INT | RAT | STR | BOOL | FUNC
 <var> ::= <char> | <char> <chars>
 <chars> ::= <char> | <digit> | <char> <chars> | <digit> <chars>
 <char> ::= a | b | c | d | e | f | g | h | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z 
@@ -26,7 +26,7 @@
 <not_exp> ::= <term> | <not> <term>
 <term> := ( <expression> ) | <id>
 <id> ::= <var> | <const>
-<const> ::= <int> | <rat> | <bool> | <str> | <list> | <func>
+<const> ::= <int> | <rat> | <bool> | <str> | <func>
 <int> ::= <natural> | <sum_diff_op> <natural>
 <natural> ::= <digit> | <digit> <natural>
 <rat> ::= <int> . <natural> | . <natural> | <sum_diff_op> . <natural>
@@ -34,8 +34,6 @@
 <str> ::= ' <all_chars> '
 <all_chars> ::= <all_char> | <all_char> <all_chars>
 <all_char> ::= <char> | <digit> | ! | @ | $ | % | ^ | & | * | ( | ) |   | + | = | { | } | [ | ] | \ | : | ; | , | . | ? | / | < | > | # 
-<list> ::= [ <elements> ] | []
-<elements> ::= <id> | <id> , <elements>
 <func> ::= <type> <func_dec> | <func_dec>
 <func_dec> ::= ( <param_decs> ) <stmt> | () <stmt>
 <param_decs> ::= <declaration> | <declaration> , <param_decs>

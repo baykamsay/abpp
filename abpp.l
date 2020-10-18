@@ -12,14 +12,12 @@ int_type INT
 rat_type RAT
 str_type STR
 bool_type BOOL
-list_type LIST
 func_type FUNC
-type {int_type}|{rat_type}|{str_type}|{bool_type}|{list_type}|{func_type}
 var {letter}({letter}|{digit}|_)*
 assignment_op :=|\+=|\-=|\*=|\/=|\^=
 or_op OR
 and_op AND
-relational_op >|>=|<|<=|\?=|\^=
+relational_op >|>=|<|<=|\?=|\!=
 sum_diff_op \+|\-
 factor_op \*|\/|%
 power_op \^
@@ -31,10 +29,6 @@ int {sign}?{digit}+
 rational {sign}?{digit}*(\.)?{digit}+
 bool TRUE|FALSE
 string '[^']*'
-element {int}|{rational}|{bool}|{string}|{var}
-list \[(({element},{space}*)*({element}))*\]
-declaration {constant}?{space}*{type}{space}*{var}
-func {type}?{space}*{lp}((({declaration},{space}*)*{declaration})*){rp}
 not NOT
 primitive_func_id GET_INCLINATION\(\)|GET_ALTITUDE\(\)|GET_TEMPERATURE\(\)|GET_ACCELERATION\(\)|GET_TIME\(\)|TURN_CAMERA\(\)|TAKE_PICTURE\(\)|CONNECT_BASE\(\)
 if IF
@@ -51,7 +45,6 @@ output OUTPUT
 {rat_type} printf("RAT_TYPE ");
 {str_type} printf("STR_TYPE ");
 {bool_type} printf("BOOL_TYPE ");
-{list_type} printf("LIST_TYPE ");
 {func_type} printf("FUNC_TYPE ");
 {assignment_op} printf("ASSIGNMENT_OP ");
 {or_op} printf("OR_OP ");
@@ -68,10 +61,8 @@ output OUTPUT
 {rational} printf("RAT ");
 {bool} printf("BOOL ");
 {string} printf("STR ");
-{list} printf("LIST ");
 {not} printf("NOT ");
 {comma} printf("COMMA ");
-{func} printf("FUNC ");
 {primitive_func_id} printf("PRIMITIVE_FUNC_ID");
 {if} printf("IF ");
 {colon} printf("COLON ");

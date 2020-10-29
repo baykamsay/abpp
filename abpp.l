@@ -6,7 +6,7 @@ semicolon ;
 colon :
 comma ,
 constant CONST
-comment #
+comment #[^\n]*\n
 int_type INT
 rat_type RAT
 str_type STR
@@ -21,8 +21,8 @@ assign_divide \/=
 assign_power \^=
 or_op OR
 and_op AND
-bigger_than >
-bigger_or_equal >=
+greater_than >
+greater_or_equal >=
 less_than <
 less_or_equal <=
 is_equal \?=
@@ -57,6 +57,8 @@ for FOR
 return RETURN
 input INPUT
 output OUTPUT
+
+%option yylineno
 %%
 {semicolon} return (SEMICOLON);
 {constant} return (CONST);
@@ -73,8 +75,8 @@ output OUTPUT
 {assign_power} return (ASSIGN_POWER);
 {or_op} return (OR_OP);
 {and_op} return (AND_OP);
-{bigger_than} return (BIGGER_THAN);
-{bigger_or_equal} return (BIGGER_OR_EQUAL);
+{greater_than} return (GREATER_THAN);
+{greater_or_equal} return (GREATER_OR_EQUAL);
 {less_than} return (LESS_THAN);
 {less_or_equal} return (LESS_OR_EQUAL);
 {is_equal} return (IS_EQUAL);
@@ -111,7 +113,7 @@ output OUTPUT
 {return} return (RETURN);
 {input} return (INPUT);
 {output} return (OUTPUT);
-{comment} return (COMMENT);
+{comment} ;
 {identifier} return (IDENT);
 %%
 int yywrap() {return 1; }

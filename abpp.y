@@ -63,7 +63,9 @@
 %%
 program: stmts ;
 stmts: stmt | stmt stmts ;
-stmt: non_if_stmt | if_stmt ;
+stmt: matched | unmatched ;
+matched: IF expression COLON matched ELSE matched | non_if_stmt ;
+unmatched: IF expression COLON stmt | IF expression COLON matched ELSE unmatched ;
 non_if_stmt: single_stmt | loop_stmt | stmt_group ;
 single_stmt: declaration | assignment | declaration_assignment | expression | return_stmt SEMICOLON ;
 declaration: type IDENT | CONST type IDENT ;
@@ -90,9 +92,6 @@ param_decs: declaration | declaration COMMA param_decs ;
 function_exp: IDENT LP params RP | IDENT LP RP | primitive_funcs ;
 primitive_funcs: CONNECT_BASE LP RP | GET_ACCELERATION LP RP | GET_ALTITUDE LP RP | GET_INCLINATION LP RP | GET_TEMPERATURE LP RP | GET_TIME LP RP | TAKE_PICTURE LP RP | TURN_CAMERA LP params RP | INPUT LP RP | OUTPUT LP params RP ;
 params: expression | expression COMMA params ;
-if_stmt: matched | unmatched ;
-matched: IF expression COLON matched ELSE matched | non_if_stmt ;
-unmatched: IF expression COLON stmt | IF expression COLON matched ELSE unmatched ;
 loop_stmt: while_stmt | for_stmt ;
 while_stmt: WHILE expression COLON stmt ;
 for_stmt: FOR for_dec SEMICOLON expression SEMICOLON assignment COLON stmt | FOR SEMICOLON expression SEMICOLON assignment COLON stmt ;

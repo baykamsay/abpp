@@ -1,4 +1,8 @@
 %{
+  #include <stdio.h>
+  #include <stdlib.h>
+  int yylex(void);
+  void yyerror(char* s);
   extern int yylineno;
 %}
 %token SEMICOLON
@@ -67,7 +71,8 @@ stmt: matched | unmatched ;
 matched: IF expression COLON matched ELSE matched | non_if_stmt ;
 unmatched: IF expression COLON stmt | IF expression COLON matched ELSE unmatched ;
 non_if_stmt: single_stmt | loop_stmt | stmt_group ;
-single_stmt: declaration | assignment | declaration_assignment | expression | return_stmt SEMICOLON ;
+single_stmt: single_stmt_options SEMICOLON ;
+single_stmt_options: declaration | assignment | declaration_assignment | expression | return_stmt ;
 declaration: type IDENT | CONST type IDENT ;
 type: INT_TYPE | RAT_TYPE | STR_TYPE | BOOL_TYPE | FUNC_TYPE ;
 assignment: IDENT assignment_ops expression ;
@@ -101,8 +106,8 @@ return_stmt: RETURN | RETURN expression ;
 
 %%
 #include "lex.yy.c"
-yyerror(char *s) {
-  printf("Syntax error on line %d: %s.", yylineno, s);
+void yyerror(char *s) {
+  printf("Syntax error on line %d: %s.\n", yylineno, s);
 }
 int main() {
   yyparse();

@@ -1,3 +1,8 @@
+%{
+  #include <stdio.h>
+  void yyerror(char *);
+%}
+
 digit [0-9]
 letter [A-Za-z]
 sign [+-]

@@ -1,6 +1,6 @@
 %{
   #include <stdio.h>
-  void yyerror(char *);
+  int yyerror(char *);
 %}
 
 digit [0-9]

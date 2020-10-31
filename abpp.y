@@ -2,7 +2,7 @@
   #include <stdio.h>
   #include <stdlib.h>
   int yylex(void);
-  void yyerror(char* s);
+  int yyerror(char* s);
   extern int yylineno;
 %}
 %token SEMICOLON
@@ -107,7 +107,7 @@ return_stmt: RETURN | RETURN expression ;
 
 %%
 #include "lex.yy.c"
-void yyerror(char *s) {
+int yyerror(char *s) {
   printf("%s on line %d.\n", s, yylineno);
 }
 int main() {

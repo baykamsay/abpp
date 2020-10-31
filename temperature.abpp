@@ -16,7 +16,7 @@ FUNC monitorTemperature := INT (INT temperature) {
     ELSE IF temperature > upperTemperatureLimit:
         RETURN 2;
     ELSE RETURN 1;
-}
+};
 
 CONNECT_BASE();
 

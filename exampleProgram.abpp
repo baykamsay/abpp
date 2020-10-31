@@ -1,3 +1,5 @@
+START
+
 #Test Program For AB++
 
 CONST INT MAX_SIZE := 20;
@@ -11,6 +13,7 @@ BOOL bool;
 FUNC compareSumDiff;
 STR str;
 
+CONNECT_BASE();
 INT inclination := GET_INCLINATION();
 INT altitude := GET_ALTITUDE();
 INT temperature := GET_TEMPERATURE();
@@ -22,18 +25,17 @@ IF altitude <= MIN_ALTITUDE AND temperature <= MAX_TEMPERATURE: {
 }
 
 STR in;
-INPUT in;
+in := INPUT();
+
 IF in ?= 'take' OR 'TAKE': {
+    TURN_CAMERA('ON');
     TAKE_PICTURE();
 } 
-IF in ?= 'connect' OR 'CONNECT':{
-    CONNECT_BASE();
-}
 
 a := 10;
 c := a / 4;
 INT inNum;
-INPUT inNum;
+inNum := INPUT();
 WHILE a < MAX_SIZE: {
     c /= inNum;	    
     a := MAX_SIZE % a; 
@@ -41,12 +43,12 @@ WHILE a < MAX_SIZE: {
 
 b := 4;
 str := 'false';
-FOR INT i = 1; i < 10; i+=1: {
+FOR INT i := 1; i < 10; i+=1: {
     a *= i^2;
     IF i ?= b: {
 	    bool := TRUE;      
     } ELSE {
-        OUTPUT str;
+        OUTPUT ('str');
     }
 }
 
@@ -55,9 +57,11 @@ compareSumDiff := INT (INT p1, INT p2) {
 	    p1 += p2;
     } ELSE {
 	    p1 -= p2;
+    }
     RETURN p1;
-} 
+};
 
 a := 2;
 b := 5;
 c := compareSumDiff(a,b);
+END

@@ -62,6 +62,8 @@ for FOR
 return RETURN
 input INPUT
 output OUTPUT
+start START
+end END
 
 %option yylineno
 %%
@@ -118,6 +120,8 @@ output OUTPUT
 {return} return (RETURN);
 {input} return (INPUT);
 {output} return (OUTPUT);
+{start} return (START);
+{end} return (END);
 {comment} ;
 {identifier} return (IDENT);
 %%

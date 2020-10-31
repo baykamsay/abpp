@@ -58,6 +58,8 @@
 %token RETURN
 %token INPUT
 %token OUTPUT
+%token START
+%token END
 %token COMMENT
 %token IDENT
 
@@ -65,7 +67,7 @@
 %start program
 
 %%
-program: stmts ;
+program: START stmts END ;
 stmts: stmt | stmt stmts ;
 stmt: matched | unmatched ;
 matched: IF expression COLON matched ELSE matched | non_if_stmt ;

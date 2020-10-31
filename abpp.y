@@ -60,7 +60,6 @@
 %token OUTPUT
 %token START
 %token END
-%token COMMENT
 %token IDENT
 
 %right ASSIGNMENT_OP ASSIGN_ADD ASSIGN_DIFF ASSIGN_DIVIDE ASSIGN_MULTIPLY ASSIGN_POWER
@@ -109,7 +108,7 @@ return_stmt: RETURN | RETURN expression ;
 %%
 #include "lex.yy.c"
 void yyerror(char *s) {
-  printf("Syntax error on line %d: %s.\n", yylineno, s);
+  printf("%s on line %d.\n", s, yylineno);
 }
 int main() {
   yyparse();

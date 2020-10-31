@@ -64,6 +64,7 @@ input INPUT
 output OUTPUT
 start START
 end END
+newline \n
 
 %option yylineno
 %%
@@ -122,6 +123,7 @@ end END
 {output} return (OUTPUT);
 {start} return (START);
 {end} return (END);
+{newline} ;
 {comment} ;
 {identifier} return (IDENT);
 %%

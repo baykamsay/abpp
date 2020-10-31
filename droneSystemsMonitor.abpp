@@ -1,6 +1,8 @@
+START
 # A drone systems monitor using AB++
 # Author: Baykam Say
 
+CONNECT_BASE();
 OUTPUT('Welcome to drone systems monitor!');
 
 INT input := -1;
@@ -30,3 +32,4 @@ WHILE input != 0: {
     OUTPUT('Thanks for using drone systems monitor!');
   ELSE OUTPUT('ERROR: illegal input!');
 }
+END

@@ -1,3 +1,4 @@
+START
 # Program to warn about temperature changes
 # Author: Baykam Say
 
@@ -17,6 +18,8 @@ FUNC monitorTemperature := INT (INT temperature) {
     ELSE RETURN 1;
 }
 
+CONNECT_BASE();
+
 INT temperature;
 
 WHILE TRUE: {
@@ -24,14 +27,15 @@ WHILE TRUE: {
     INT result := monitorTemperature(temperature);
 
     IF result ?= 0: {
-        OUTPUT 'Too cold, it is ' + temperature + ' degrees outside';
-        OUTPUT 'The altitude is ' + GET_ALTITUDE() + ' m';
+        OUTPUT('Too cold, it is ' + temperature + ' degrees outside');
+        OUTPUT('The altitude is ' + GET_ALTITUDE() + ' m');
         TAKE_PICTURE();
     } ELSE IF result ?= 1: {
-        OUTPUT 'Everything is ok.';
+        OUTPUT('Everything is ok.');
     } ELSE {
-        OUTPUT 'Too hot, it is ' + temperature + ' degrees outside';
-        OUTPUT 'The altitude is ' + GET_ALTITUDE() + ' m';
+        OUTPUT('Too hot, it is ' + temperature + ' degrees outside');
+        OUTPUT('The altitude is ' + GET_ALTITUDE() + ' m');
         TAKE_PICTURE();
     }
 }
+END
